@@ -27,12 +27,15 @@ File asli `events.csv` tidak disertakan dalam repositori. Jika ingin menjalankan
 - `visualisation.png` — Visualisasi graf pertemanan Neo4j.
 - `graf_sebelum_similarity.png` — Graf sebelum penambahan hubungan similarity.
 - `graf_sesudah_similarity.png` — Graf setelah penambahan hubungan similarity.
+- `hasil_query_similarity.png` — Hasil query Cypher yang menampilkan lima Item dengan nilai similarity tertinggi.
 
 ## Tahapan Pengerjaan
 
 Pengerjaan UTS meliputi persiapan lingkungan Python, penggunaan Python Driver Neo4j, filtering dataset, dan impor data RetailRocket ke Neo4j.
 
 Analisis dilanjutkan dengan pembuatan Vector Space Modelling (VSM) untuk User dan Item, visualisasi graf menggunakan NetworkX, perbandingan proyeksi User–User dan Item–Item, serta perhitungan Cosine Similarity.
+
+Hasil Cosine Similarity disimpan ke Neo4j menggunakan relationship `SIMILAR_TO`. Notebook juga menampilkan query Cypher serta perbandingan graf sebelum dan sesudah relationship similarity ditambahkan.
 
 Tahap akhir menggunakan Item-Based KNN dengan `k = 5` untuk membuat rekomendasi produk. Hasil rekomendasi dievaluasi menggunakan `Hit@5` dan `NDCG@5`.
 
@@ -58,6 +61,12 @@ Proyek dikerjakan menggunakan Python 3.10 dan Neo4j Desktop.
 3. Siapkan Neo4j Desktop dan database `neo4j`.
 4. Unduh dataset asli jika ingin mengulangi proses filtering.
 5. Buka `UTS_Graf_Sains_Data.ipynb` menggunakan Jupyter Notebook.
-6. Jalankan kode sesuai urutan pengerjaan. Proses impor Neo4j memerlukan database yang masih kosong agar data tidak terimpor berulang.
+6. Jalankan kode sesuai tahapan pengerjaan.
 
-Hasil eksekusi dan penjelasan dari pengerjaan sebelumnya sudah disimpan dalam notebook.
+**Catatan:**
+
+Latihan graf pertemanan Arthur pada Bagian 1.2 dijalankan secara terpisah melalui file `latihan_driver_neo4j.py` menggunakan PowerShell. Setelah latihan selesai, data latihan dihapus sebelum proses impor RetailRocket dilakukan.
+
+Proses impor RetailRocket memerlukan database Neo4j yang masih kosong agar data tidak tercampur atau terimpor berulang.
+
+Jika database sudah berisi data hasil impor, notebook tidak perlu dijalankan menggunakan `Run All`. Hasil eksekusi dan penjelasan dari pengerjaan sebelumnya sudah disimpan dalam notebook sebagai dokumentasi.
